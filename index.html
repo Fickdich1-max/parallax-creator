@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Parallax Creator</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="app">
+    <div id="toolbar" class="glass">
+      <div class="left">
+        <button id="btnAdd">+ Add Images</button>
+        <button id="btnEmpty">New Empty Layer</button>
+        <button id="btnReset">Reset</button>
+        <button id="btnExport">Export</button>
+        <input type="file" id="fileInput" multiple accept="image/png,image/jpeg" style="display:none">
+      </div>
+      <div class="right">
+        <label>Canvas:
+          <select id="canvasSize">
+            <option value="1920x1080">1920×1080</option>
+            <option value="1280x720">1280×720</option>
+            <option value="1080x1920">1080×1920</option>
+          </select>
+        </label>
+        <label>Speed <input id="baseSpeed" type="number" value="100" style="width:60px"> px/s</label>
+        <label>Direction
+          <select id="direction">
+            <option value="-1">Left</option>
+            <option value="1">Right</option>
+          </select>
+        </label>
+        <label>Easing
+          <select id="easing">
+            <option value="linear">linear</option>
+            <option value="easeIn">easeIn</option>
+            <option value="easeOut">easeOut</option>
+            <option value="easeInOut">easeInOut</option>
+          </select>
+        </label>
+        <label>Sky <input type="color" id="bgStart" value="#87CEEB"><input type="color" id="bgEnd" value="#FFFFFF"></label>
+        <label><input type="checkbox" id="sunRays">Sun rays</label>
+      </div>
+    </div>
+    <div id="main">
+      <div id="layersPanel" class="glass" ondragover="event.preventDefault()">
+        <h3>Layers</h3>
+        <div id="layersList"></div>
+      </div>
+      <div id="previewPane" class="glass">
+        <canvas id="previewCanvas" width="1920" height="1080"></canvas>
+      </div>
+    </div>
+    <div id="status" class="glass">
+      <span id="statusMem">Memory: 0 MB</span>
+      <span id="statusFPS">FPS: 0</span>
+    </div>
+  </div>
+  <div id="dropOverlay">Drop images here</div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

@@ -58,6 +58,24 @@
     </div>
   </div>
   <div id="dropOverlay">Drop images here</div>
+
+  <!-- 🧠 Auto-Load demo.png.png beim Seitenstart -->
+  <script>
+    window.addEventListener('load', () => {
+      fetch('demo.png.png')
+        .then(res => res.blob())
+        .then(blob => {
+          const file = new File([blob], 'demo.png.png', { type: 'image/png' });
+          const dataTransfer = new DataTransfer();
+          dataTransfer.items.add(file);
+          const input = document.getElementById('fileInput');
+          input.files = dataTransfer.files;
+          input.dispatchEvent(new Event('change'));
+        })
+        .catch(err => console.error('Fehler beim Laden des Demo-Bildes:', err));
+    });
+  </script>
+
   <script type="module" src="app.js"></script>
 </body>
 </html>
